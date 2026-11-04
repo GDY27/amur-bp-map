@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ПодборПродуктАгент — временные карты Амурской области и Приморья</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;font:14px system-ui,Arial,sans-serif;color:#1c3850}body{display:flex;flex-direction:column}
+header{background:#17384e;color:white;padding:12px 17px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}header strong{font-size:17px}header small{color:#cddde7}
+nav{background:#fff;border-bottom:1px solid #cedae2;padding:9px 14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+button{padding:10px 14px;border:1px solid #a8b9c7;background:#f2f5f7;border-radius:8px;font-weight:700;color:#1e465c;cursor:pointer}button[aria-pressed=true]{background:#15617c;border-color:#15617c;color:white}
+.state{font-size:12px;color:#5e7180;margin-left:auto}iframe{flex:1;width:100%;border:0;min-height:410px;background:#eef2f5}
+footer{font-size:11px;padding:6px 14px;color:#516b7c;border-top:1px solid #ddd}@media(max-width:650px){.state{width:100%;margin-left:0}header strong{font-size:15px}}
+</style></head><body>
+<header><strong>ПодборПродуктАгент · Временные региональные карты</strong><small>04.11.2026 · PREVIEW (не FINAL GEO/BP)</small></header>
+<nav><button id="amur" aria-pressed="true">Амурская область</button><button id="prim" aria-pressed="false">Приморский край</button><span class="state" id="state">627 населённых пунктов · 44 адреса HOLD · T10 не подтверждён</span></nav>
+<iframe title="Карта региона" id="map" src="amur.html"></iframe>
+<footer>Предварительный просмотр. Основной терминал не изменён. Для данных Приморья — переданный R6, без статуса FINAL.</footer>
+<script>
+(()=>{const r={amur:['amur.html','627 населённых пунктов · 44 адреса HOLD · T10 не подтверждён'],prim:['primorye.html','659 населённых пунктов · 162 магазина по переданному R6 · T10 предварительный']};function show(k){const t=r[k];if(!t)return;document.getElementById('map').src=t[0];document.getElementById('state').textContent=t[1];for(const id of ['amur','prim'])document.getElementById(id).setAttribute('aria-pressed',String(id===k));history.replaceState(null,'','#'+k)}for(const id of ['amur','prim'])document.getElementById(id).onclick=()=>show(id);if(location.hash==='#prim')show('prim')})();
+</script></body></html>
